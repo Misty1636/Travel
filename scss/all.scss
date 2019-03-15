@@ -1,0 +1,702 @@
+@import "_reset.scss";
+@import "_skill.scss";
+@import "_grid.scss";
+
+@include border-box;
+@include fonts;
+
+.container{
+	max-width: 1200px;
+	padding: 0 15px;
+	margin: 0 auto;
+	@include padpro{
+		max-width: 960px;
+		@include pad{
+			max-width: 720px;
+			@include mobile568{
+				max-width: 520px;
+			}
+		}
+	}
+}
+
+.gotop{
+	position: fixed;
+	display: none;
+	right: 1%;
+	bottom:1%;
+	z-index: 99;
+	border-radius: 50%;
+	opacity: .8;
+	a{
+		display: block;
+		outline: 0;
+		width: 40px;
+		height: 40px; 
+		line-height: 36px;
+		text-align: center;
+		border-radius: 50%;
+		background: #FFF;
+		border: 1px solid #444444;
+		color: #444444;
+		font-size: 30px;
+		transition: all .3s;
+		&:hover,&:active{
+      transform: scale(1.1);
+		}
+	}
+}
+
+.header{
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  .nav{
+  	padding: .5rem 0;
+  	.navbar{
+  		max-width: 1600px;
+  		margin: 0 auto;
+  		display: flex;
+  		justify-content: space-between;
+  		align-items: center;
+  	}
+  	.logo{
+      display: flex;
+      align-items: center;
+      img{
+  			height: 60px;
+  			margin-left: 1rem;
+  			@include mobile568{
+  				height: 45px;
+  				margin-left: 0.5rem;
+  			}
+  		}
+  	}
+  	.logo-text{
+  		display: flex;
+  		flex-direction: column;
+  		.logo-title{
+  			font-size: 26px;
+  			font-weight: bold;
+  			margin-bottom: 5px;
+  			@include mobile568{
+  				font-size: 22px;
+  				letter-spacing: 5px;
+  			}
+  		}
+  	}
+  	.menu{
+  		display: flex;
+  		@include pad{
+  			position: absolute;
+  			right: 0;
+  			top: 0;
+  			z-index: 10;
+  			display: block;
+  			height: 100vh;
+  			background: #ff8377;
+  			transform: translateX(280px);
+  			opacity: 0;
+  			&.open{
+  				transition: transform .3s;
+  				transform: translateX(0);
+  				opacity: 1;
+  			}
+  			&.close{
+  				transition:transform .3s;
+  				transform: translateX(280px);
+  			}
+  		}
+			a{
+				display: block;
+				position: relative;
+				color: #444444; 
+				letter-spacing: 1.5px;
+				text-decoration: none;
+				font-weight: 700;
+				padding: 0.5rem 1rem;
+				transition: all .4s;
+				@include padpro{
+					padding-right: 0.7rem;
+					padding-left: 0.7rem;
+					@include pad{
+						padding: 1rem 0;
+						text-indent: 50px;
+						font-size: 20px;
+						font-weight: 400;
+						width: 280px;
+						color: #FFF;
+						border-bottom: 1px solid #FFF;
+					}
+				}
+				&:after{
+					width: 70px;
+			    height: 1px;
+			    display: block;
+			    background-color: #FF6F61;
+			    position: absolute;
+			    content: 'none';
+			    font-size: 0;
+			    bottom: 3px;
+			    left: 16px;
+			    transition: all .5s;
+			    transform: scale(0,1);
+			    @include padpro{
+			    	left: 11.2px;
+			    	@include pad{
+			    		display: none;
+			    	}
+			    }
+				}
+				&:hover,&:hover:after{
+		      color: #FF6F61;
+		      transform: scale(1,1);
+		      @include pad{
+		      	color: #FFF;
+		      	background: #FF6F61;
+		      }
+				}
+			}
+			.memu-item{
+				position: relative;
+				&:after{
+			    content: '/';
+			    font-size: 14px;
+			    display: block;
+			    position: absolute;
+			    left: -3px;
+			    top: 0.5rem;
+			    color: #CCCCCC;
+			    @include pad{
+			    	display: none;
+			    }
+			  }
+			}
+  	}
+  	.mobile-link{
+  		color: #444444;
+  		font-size: 30px;
+  		display: none;
+  		padding: 0.3rem 0.5rem; 
+  		margin-left: 2%;
+  		transition: all .3s;
+  		@include pad{
+  			display: inline-block;
+  		}
+  		&:hover,&:active{
+  			color: #FF6F61;
+  		}
+  	}
+  }
+  .banner{
+		height: 100%;
+		background: url(../img/photo.jpg) no-repeat center center; 
+		background-size: cover;
+		padding-top: 120px;
+		position: relative;
+  }
+	.title{
+  	margin: 0 auto;
+  	text-shadow: 0 0 20px  #444444;
+  	writing-mode: vertical-lr;
+  	letter-spacing: 10px;
+  	line-height: 1.8;
+  	font-size: 60px; 
+  	font-weight: 700;
+  	animation:titlefadeIn 2s;
+  	color: #FFF;
+  	@include pad{
+  		font-size: 50px;
+  		@include mobile568{
+	  		font-size: 40px;
+	  	}
+    }
+    span{
+    	margin-top: 2em;
+    }
+  }
+  .prompt{
+		transform: translateX(-50%);
+		position: absolute;
+		left: 50%;
+		bottom: 100px;
+		width: 70px;
+		height: 50px;
+		text-align: center;
+		text-shadow: 2px 2px #444444;
+		i{
+			animation: fadeInDown 2s infinite;
+			color: #FFF;
+		}
+		span{
+			display: block;
+			color: #FFF;
+		}
+	}
+}
+
+.animated{
+  opacity: 0;
+  transition: all 1.5s;
+  transform: translateY(50px);
+}
+
+.fadeIn{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content{
+	padding: 7rem 0 7rem;
+	.popular-area{
+		max-width: 900px;
+		padding: 1.5rem;
+		background: #FFF;
+		box-shadow: 0 0 10px rgba(0,0,0,.3); 
+		margin: 0 auto;
+		border-radius: 5px;
+		@include mobile767{
+			padding: 1.5rem 1rem;
+		}
+		h2{
+			text-align: center;
+			margin-bottom: 2.5rem;
+			font-size: 30px;
+			font-weight: bold;
+			color:#444444;
+			i{
+				font-size: 24px;
+				color: gold;
+				transform: rotate(-30deg) translate(45%,-70%);
+				&:after{
+			    content: '';
+			    display: block;
+			    position: absolute;
+			    width: 20px;
+			    height: 1.5px;
+			    left: 5px;
+			    top: 19.5px;
+			    z-index: 20;
+			    background:rgba(red,.7);
+			  } 
+			}
+		}
+		.popular-list{
+			display: flex;
+			justify-content: space-around;
+			@include mobile767{
+					display: block;
+					li{
+						float: left;
+						width: 30%;
+						margin: 0 10% 2rem 10%;
+					}
+					@include clearfix
+					@include mobile568{
+						li{
+							width: 40%;
+							margin: 0 5% 1.5rem 5%;
+						}
+						@include iphoneXS{
+							li{
+								width: 45%;
+								margin: 0 2.5% 1.5rem 2.5%;
+							}
+						}
+					}
+			}
+			i{
+				font-size: 14px;
+				transform: translateY(-3px);
+				margin-right: 2px;
+
+			}
+			a{
+				text-decoration: none;
+				font-size: 20px;
+				display: inline-block;
+				padding: 1rem 2rem;
+				border-radius: 30px;
+				color: #FFF;
+				background: #CCC;
+				opacity: 0.9;
+				transition: all .3s;
+				@include mobile767{
+					display: block;
+					text-align: center;
+					@include mobile767{
+						padding: 1rem 0;
+						@include iphone5{
+							padding-left: 0;
+							padding-right: 0;
+						}
+					}
+				}
+				&:hover{
+					opacity: 1;
+				}
+			}
+			.area1{
+				background: #DD4132;
+			}
+			.area2{
+				background: #39BF8A;
+			}
+			.area3{
+				background: #00539C;
+			}
+			.area4{
+				background: #FE840E;
+			}
+		}
+	}
+}
+@keyframes titlefadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.district{
+	padding: 5rem 0 2rem; 
+	text-align: center;
+	@include pad{
+		padding-top: 3rem;
+	}
+	img{
+		height: 35px;
+		vertical-align: middle;
+	}
+	.district-menu{
+		width: 450px;
+		padding: 0.7rem 0 0.7rem 0.5rem;
+		text-align: center;
+	  text-align-last: center;
+		outline: 0;
+		font-size: 18px;
+		font-weight: bold;
+		letter-spacing: 1px;
+		border-radius: 5px;
+		border: 2px solid #00bbff;
+		color:#444444;
+		-webkit-appearance: none; 
+		background: url(../img/icons_down.png) no-repeat 98% center;
+    option{
+    	outline: 0 !important;
+    	border: none;
+    	&:hover{
+        background: #ff9a9e;
+    	}
+    }
+    @include mobile767{
+    	width: 400px;
+	    @include mobile568{
+	    	width: 290px; 
+	    	padding-left: 0;
+	    	@include iphoneXSMAX{
+	    		width: 230px; 
+	    		@include iphone5{
+		    		width: 200px; 
+		    	}
+	    	}
+	    }
+    }
+	}
+}
+
+
+
+.attraction{
+	background: #F2F2F2;
+	padding-bottom: 38px;
+	background-image: url(../img/bg-img.jpg);
+}
+
+.line{
+	overflow: hidden;
+	position: relative;
+	padding: 5px 0;
+	margin-bottom: 4rem;
+	.fa-arrow-alt-circle-down{
+		position: absolute;
+		left: 50%;
+		top: 0;
+		transform: translateX(-50%);
+		font-size: 26px;
+		border-radius: 50%;
+		background: #FFF;
+		color: #FF6F61;
+	}
+}
+.datas{
+	padding-top: 3rem;
+}
+
+.current-area{
+  padding: 45px 0;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+.icon-local{
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 0.5rem;
+	img{
+		height: 35px;
+	}
+}
+.district-name{
+	text-align: center;
+	color: #FF6F61;
+	font-size: 35px;
+	font-weight: bold;
+	margin:0 auto ;
+	width: 185px;
+	padding: 0 40px;
+	position: relative;
+	@include mobile568{
+    width: 170px;
+		padding: 0;
+		@include iphoneXSMAX{
+			width: 150px;
+		}
+	}
+	&:before{
+		border: .7px solid #FF6F61;
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    width: 500px;
+	}
+	&:after{
+		border: .7px solid #FF6F61;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left:100%;
+    width: 500px;
+	}
+	i{
+		font-size: 25px;
+		line-height: 25px;
+	}
+}
+
+.list{
+	padding: 0 35px;
+	@include clearfix;
+	 @include padpro{
+	 	padding: 0;
+	 }
+	.item-box{
+	  float: left;
+	  width: 48%;
+	  background: #FFF;
+	  margin-bottom: 2rem;
+	  box-shadow: 0 0 10px rgba(0,0,0,.3); 
+	  &:nth-child(2n){
+	  	margin-left: 4%;
+	  }
+	  @include padpro{
+	  	width: 49%;
+	  	&:nth-child(2n){
+		  	margin-left: 2%;
+		  }
+		  @include pad{
+		  	float: none;
+		  	width: 70%;
+		  	margin-left: 0;
+		  	margin: 0 15% 3rem !important;
+		  	@include mobile568{
+		  		width: 85%;
+		  		margin: 0 7.5% 3rem !important;
+		  		@include iphoneXSMAX{
+		  			width: 100%;
+		  			margin-left: 0 !important;
+		  			margin-right: 0 !important;
+		  		}
+		  	}
+		  }
+	  }
+	}
+	.item-img{
+		height: 295px;
+		overflow: hidden;
+		position: relative;
+		@include padpro{
+			height: 250px;
+			@include XSMAXhorizontal{
+				height: 230px;
+				@include mobile568{
+					height: 205px;
+				}
+			}
+		}
+		img{
+			width: 100vw;
+			min-height: 295px;
+			transition: all 1s;
+			position: relative;
+			z-index: 2;
+			&:hover{
+			  transform: scale(1.2);
+		  }
+		}
+		.site{
+      position: absolute;
+      z-index: 3;
+      color: #FFF;
+      bottom: 15px;
+      width: 100%;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      @include pad{
+      	padding: 0 1rem;
+      	@include mobile568{
+      		padding: 0 0.5rem;
+      		@include iphone5{
+      			padding: 0;
+      		}
+      	}
+      }
+      .sitename{
+      	font-size: 24px;
+      	font-weight: bold;
+      }
+		}
+	}
+	.message{
+		padding: 1rem 1.5rem;
+		min-height: 150px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		@include iphone5{
+			padding: 0 1rem 0.5rem;
+		}
+		span{
+			display: block;
+			line-height: 1.8;
+			padding-left: 25px;
+		}
+		.clock{
+			background: url(../img/icons_clock.png) no-repeat left 5px; 
+		}
+		.local{
+			background: url(../img/icons_pin.png) no-repeat 1px 4px;
+			margin: 3px 0;
+		}
+		.phone{
+			background: url(../img/icons_phone.png) no-repeat 3px center;
+			display: flex;
+			justify-content: space-between;
+		}
+		.free{
+			width: 90px;
+			padding-left: 25px;
+			background: url(../img/icons_tag.png) no-repeat left center;
+		}
+	}
+}
+
+
+.pagination{
+  height: 100px;
+  display: flex;
+	justify-content: center; 
+	align-items: center;
+}
+.pages{
+	display: flex;
+	align-items: center;
+	a{
+		text-decoration: none;
+		color: #444444;
+		margin-right: 1rem;
+		font-weight: 700;
+	}
+	.next{
+		margin-right: 0;
+	}
+	.page-num{
+		display: block;
+		padding: 6px 9.3px;
+		border-radius: 50%;
+		border: 1px solid #D1D1D1;
+		background: #E8E8E8;
+		&:hover,&.active{
+			background: #ff8377;
+			border-color: transparent;
+			color: #FFF;
+		}
+	}
+}
+
+.disabled{
+  pointer-events: none;
+  cursor: default;
+  opacity: 0;
+}
+
+.footer{
+	padding: 1rem 0;
+	background: #444444; 
+	text-align: center;
+	color: #FFF;
+	img{  
+		height: 35px;
+		position: absolute;
+		transform: translateX(-135px);
+	}
+	.source{
+		display: block;
+		text-decoration: none;
+		margin: 0 auto;
+		width: 180px;
+		padding: 10px 0;
+		color: #FFF;
+		border: 1px solid #FFF;
+		border-radius: 25px; 
+		transition: all .3s;
+		&:hover{
+			color: #444444; 
+			background: #FFF;
+		}
+	}
+	.copyright{
+		display: block;
+    padding-top: 10px;
+    margin-bottom: 1rem; 
+    @include mobile568{
+    	span{
+				display: block;
+				margin-top: 0.5rem;
+			}  
+    } 
+	}
+}

@@ -1,0 +1,65 @@
+@mixin desktop1440{
+	@media (max-width: 1440px){
+		@content
+	}
+}
+
+@mixin desktop1280{
+	@media (max-width: 1280px){
+		@content
+	}
+}
+
+@mixin padpro{
+	@media (max-width: 1024px){
+		@content
+	}
+}
+
+@mixin XSMAXhorizontal{
+	@media (max-width: 896px){
+		@content
+	}
+}
+
+@mixin pad{
+	@media (max-width: 768px){
+		@content
+	}
+}
+
+@mixin mobile767{
+	@media (max-width: 767px){
+		@content
+	}
+}
+
+@mixin mobile568{
+	@media (max-width: 568px){
+		@content
+	}
+}
+
+@mixin mobile480{
+	@media (max-width: 480px){
+		@content
+	}
+}
+
+@mixin iphoneXSMAX{
+	@media (max-width: 414px){
+		@content
+	}
+}
+
+@mixin iphoneXS{
+	@media (max-width: 375px){
+		@content
+	}
+}
+
+@mixin iphone5{
+	@media (max-width: 320px){
+		@content
+	}
+}
