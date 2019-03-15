@@ -1,19 +1,3 @@
-// var canvas = document.getElementById('canvas')
-// var ctx = canvas.getContext('2d')
-
-// canvas.height = 10;
-// canvas.width = 1170;
-
-// function drawDashedLine(pattern) {
-//   ctx.beginPath();
-//   ctx.lineWidth = 2; 
-//   // ctx.setLineDash(pattern);
-//   ctx.moveTo(0, 5);
-//   ctx.lineTo(1170, 5);
-//   ctx.strokeStyle = '#FF6F61';
-//   ctx.stroke();
-// }
-// drawDashedLine([5, 15]);
 
 var hot = document.querySelector('.popular-list')
 var zones = document.querySelector('.district-menu')
@@ -64,7 +48,6 @@ function xhrdata(){ // ajax獲取資料
 
   function updatelist(e){ // select選單change更新資料
     select = e.target.value
-    // if(select == '請選擇行政區') return
     current = 1  // change後讓當前頁面回到1
     createlist(select)
 
@@ -87,17 +70,13 @@ function xhrdata(){ // ajax獲取資料
       var num = e.target.dataset.num
       var direction = e.target.dataset.direction
       if( num > 0){current = num}  // 判別是否是透過num刷新 ,以防undefined
-      console.log('最大頁數'+maxpage)
-      console.log(select)
       if( direction == 'prev' && current>1){ current--} // 點擊prev, current-1
       if( direction == 'next' && current < maxpage){ current++} // 點擊next, current+1
-      console.log(current)
       createlist(select)
    }
   
   function randomlist(){  //進入畫面隨機渲染任一區域
   	var index = Math.floor((Math.random()*copyarray.length)); 
-  	console.log(index)
   	createlist(copyarray[index].Zone)
   }
   randomlist()
@@ -115,8 +94,6 @@ function xhrdata(){ // ajax獲取資料
      		copyarray.push(data)
      	}
      }
-     console.log(copyarray)
-
 
      maxpage= Math.ceil(x/4)  // 一頁最多4個, 判別幾頁
      var z = (current-1)*4 // 依當前current決定從第幾筆資料
@@ -139,8 +116,6 @@ function xhrdata(){ // ajax獲取資料
   	 	}
   	 }
 
-  	 console.log('限制'+s)
-  	 console.log('當前在第'+current)
      var num = ''
      var page= ''
   	 if( maxpage>1){ // 大於一頁產生分頁
@@ -163,8 +138,7 @@ function xhrdata(){ // ajax獲取資料
   	 	      page = '<ul class="pages"><li><a href="#" class="prev disabled" data-direction="prev"><<</a></li>'
   	 	 	          +num+'<li><a href="#" class="next" data-direction="next">>></a></li></ul>'
   	 }	
-  	 console.log('總共'+x)
-  	 console.log('從第幾個'+z)
+
   	 select = item  // 要給select值,以防透過按鈕沒有正確給予當前區 
 
   	paginations.innerHTML = page
